@@ -1,0 +1,68 @@
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+h2 {
+  font-size: 2em;
+  margin-top: 0;
+  padding-top: 0;
+}
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+
+.form-control{
+  /*width: 50%;*/
+}
+
+.leftContainer{
+  float: left;
+  width: 48%;
+  margin-left: 20px;
+}
+
+.rightContainer{
+  float: left;
+  width: 47%;
+  height: 100%;
+  margin-left: 35px;
+}
+
+.parentContainer{
+  width: 98%;
+  height: 598px;
+  margin: 10px auto;
+  border: 1px solid black;
+  padding-top: 20px;
+}
+
+textarea {
+  overflow-y: scroll;
+  resize: none; /* Remove this if you want the user to resize the textarea */
+  display: block;
+  margin: 10px 0px;
+}
+
+.subscriptionDiv{
+  height: 90%;
+  overflow-y: scroll;
+  border: 1px solid rgb(169, 169, 169);
+}

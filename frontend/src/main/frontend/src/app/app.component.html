@@ -1,0 +1,75 @@
+<div>
+
+
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{title}}!
+    </h1>
+  </div>
+
+  <div class="parentContainer">
+    <div class="leftContainer">
+      <form (ngSubmit)="onSubmit()" #pubNubApiForm="ngForm" ng-init="model=''">
+        <div class="form-group">
+          <label for="publishKey">Publish Key :</label>
+          <input [disabled]="subscribeFlag" [(ngModel)]="model.publishKey" type="text" class="form-control" id="publishKey" required name="publishKey"  #publishKey="ngModel">
+          <div [hidden]="publishKey.valid || publishKey.pristine || publishKey.dirty"
+               class="alert alert-danger">
+            Publish Key is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subscriberKey">Subscriber Key :</label>
+          <input [disabled]="subscribeFlag" [(ngModel)]="model.subscriptionKey" type="text" class="form-control" id="subscriberKey" required name="subscriberKey" #subscriberKey="ngModel">
+
+
+          <div [hidden]="subscriberKey.valid || subscriberKey.pristine || subscriberKey.dirty"
+               class="alert alert-danger">
+            Subscriber Key is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="channelName">Channel Name or Group :</label>
+          <input [disabled]="subscribeFlag" [(ngModel)]="model.channel" type="text" class="form-control" id="channelName" required name="channelName" #channelName="ngModel">
+
+          <div [hidden]="channelName.valid || channelName.pristine || channelName.dirty"
+               class="alert alert-danger">
+            channel Name or Group required
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="filter">Filter :</label>
+          <input [disabled]="subscribeFlag" [(ngModel)]="model.filter" type="text" class="form-control" id="filter" name="filter" #filter="ngModel">
+        </div>
+
+
+        <button type="button" [disabled]="subscribeFlag || !model.channel" class="btn btn-default" (click)="subscribe(model)">Subscribe</button>
+        <button type="button" [disabled]="!subscribeFlag" class="btn btn-default" (click)="unSubscribe()">Un Subscribe</button>
+
+
+        <button type="button" [disabled]="!model.channel || subscribeFlag" class="btn btn-default" (click)="removeChannel(model.channel)">Remove Channel</button>
+        <button type="button" [disabled]="subscribeFlag" class="btn btn-default" (click)="removeFilter(model.filter)">Remove Filter</button>
+
+
+      </form>
+    </div>
+
+    <div class="rightContainer">
+      <p>
+        Subscription Messages:
+      </p>
+      <!--  <textarea cols="75" rows="10" readonly [(ngModel)]="subscribedMessage" (ngModelChange)="parseTextArea()"></textarea> -->
+      <div class="subscriptionDiv">
+        <ul  *ngFor="let item of subscribedMessage">
+          <li>{{ item }}</li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
